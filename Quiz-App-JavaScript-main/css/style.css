@@ -51,7 +51,8 @@ body{
 }
 
 .info_box{
-    width: 540px;
+    width: 40%;
+    height: 60%;
     background: #242526;
     color: #fff;
     border-radius: 5px;
@@ -62,24 +63,25 @@ body{
 }
 
 .info_box .info-title{
-    height: 60px;
+    height: 20%;
     width: 100%;
     border-bottom: 1px solid lightgrey;
     display: flex;
     align-items: center;
     padding: 0 30px;
     border-radius: 5px 5px 0 0;
-    font-size: 20px;
+    font-size: 1.7vw;
     font-weight: 600;
 }
 
 .info_box .info-list{
-    padding: 15px 30px;
+    padding: 1vw 1.5vw;
+    height: 60%;
 }
 
 .info_box .info-list .info{
     margin: 5px 0;
-    font-size: 17px;
+    font-size: 1.4vw;
 }
 
 .info_box .info-list .info span{
@@ -87,19 +89,19 @@ body{
     color: #007bff;
 }
 .info_box .buttons{
-    height: 60px;
+    height: 20%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding: 0 30px;
+    padding: 0 1.5vw;
     border-top: 1px solid lightgrey;
 }
 
 .info_box .buttons button{
     margin: 0 5px;
-    height: 40px;
-    width: 100px;
-    font-size: 16px;
+    height: 60%;
+    width: 25%;
+    font-size: 1.3vw;
     font-weight: 500;
     cursor: pointer;
     border: none;
@@ -110,6 +112,7 @@ body{
 
 .quiz_box{
     width: 80%;
+    height: 85%;
     background: #242526;
     color: #fff;
     border-radius: 5px;
@@ -122,9 +125,9 @@ body{
 .quiz_box header{
     position: relative;
     z-index: 2;
-    height: 70px;
+    height: 15%;
     width: 100%;
-    padding: 0 30px;
+    padding: 0 1.5vw;
     border-radius: 5px 5px 0 0;
     display: flex;
     align-items: center;
@@ -133,7 +136,7 @@ body{
 }
 
 .quiz_box header .title{
-    font-size: 20px;
+    font-size: 2vw;
     font-weight: 600;
 }
 
@@ -141,29 +144,28 @@ body{
     color: #004085;
     background: #cce5ff;
     border: 1px solid #b8daff;
-    height: 45px;
-    padding: 0 8px;
+    height: 65%;
+    padding: 0 0.6vw;
     border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 145px;
+    width: 17%;
 }
 
 .quiz_box header .timer .time_left_txt{
     font-weight: 400;
-    font-size: 17px;
+    font-size: 1.4vw;
     user-select: none;
 }
 
 .quiz_box header .timer .timer_sec{
-    font-size: 18px;
+    font-size: 1.4vw;
     font-weight: 500;
-    height: 30px;
-    width: 45px;
+    height: 60%;
+    width: 30%;
     color: #fff;
     border-radius: 5px;
-    line-height: 30px;
     text-align: center;
     background: #343a40;
     border: 1px solid #343a40;
@@ -172,24 +174,31 @@ body{
 
 .quiz_box header .time_line{
     position: absolute;
-    width: 100%;
     bottom: 0px;
     left: 0px;
     height: 3px;
-    background: yellow;
+    background: #23903c;
 }
 
 section{
-    padding: 25px 30px 20px 30px;
+    padding: 1.5vw 1.7vw 1.4vw 1.7vw;
+    height: 70%;
+    overflow:auto ;
+    display: flex;
+    flex-direction: column;
+}
+
+section::-webkit-scrollbar{
+    width: 1px;
 }
 
 section .que_text{
-    font-size: 25px;
+    font-size: 1.6vw;
     font-weight: 600;
 }
 
 section .option_list{
-    padding: 20px 0px;
+    padding: 1.4vw 0px;
     display: block;   
 }
 
@@ -197,9 +206,9 @@ section .option_list .option{
     background: aliceblue;
         border: 1px solid #18191A;
         border-radius: 5px;
-        padding: 8px 15px;
-        font-size: 17px;
-        margin-bottom: 15px;
+        padding: 0.5vw 0.7vw;
+        font-size: 1.4vw;
+        margin-bottom: 1.2vw;
         cursor: pointer;
         transition: all 0.3s ease;
         display: flex;
@@ -235,15 +244,14 @@ section .option_list .option.disabled{
 }
 
 section .option_list .option .icon{
-    height: 26px;
-    width: 26px;
+    height: 30%;
+    width: 3%;
     border: 2px solid transparent;
     border-radius: 50%;
     text-align: center;
-    font-size: 13px;
+    font-size: 1.2vw;
     pointer-events: none;
     transition: all 0.3s ease;
-    line-height: 24px;
 }
 .option_list .option .icon.tick{
     color: #23903c;
@@ -258,8 +266,8 @@ section .option_list .option .icon{
 }
 
 footer{
-    height: 60px;
-    padding: 0 30px;
+    height: 15%;
+    padding: 0 1.5vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -269,6 +277,7 @@ footer{
 footer .total_que span{
     display: flex;
     user-select: none;
+    font-size: 1.4vw;
 }
 
 footer .total_que span p{
@@ -281,9 +290,9 @@ footer .total_que span p:first-child{
 }
 
 footer button{
-    height: 40px;
-    padding: 0 13px;
-    font-size: 18px;
+    height: 60%;
+    padding: 0 1.1vw;
+    font-size: 1.4vw;
     font-weight: 400;
     cursor: pointer;
     border: none;
@@ -390,4 +399,27 @@ footer button.show{
 
 #my-canvas.show-canvas{
     opacity: 1;
+}
+
+.pagination{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.pagination div {
+    color: white;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    cursor: auto;
+  }
+  
+  .pagination div.active {
+    background-color: #23903c;
+    color: white;
+  }
+
+  .pagination div:hover:not(.active) {
+    background-color: #ddd;
 }

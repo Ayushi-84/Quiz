@@ -25,6 +25,13 @@ exit_btn.onclick = ()=>{
 
 // if continueQuiz button clicked
 continue_btn.onclick = ()=>{
+    for(var i=1;i<=questions.length;i++)
+    { 
+        let a=document.createElement('div');
+        a.id=i;
+        a.innerHTML=i;
+        document.getElementById('pagination').append(a);
+    }
     info_box.classList.remove("activeInfo"); //hide info box
     quiz_box.classList.add("activeQuiz"); //show quiz box
     showQuetions(0); //calling showQestions function
@@ -101,6 +108,16 @@ function optionSelected(answer){
 }
 
 function queCounter(index){
+
+    for(var i=1;i<=questions.length;i++)
+    {   if(i!=index)
+       {
+        var page=document.getElementById(i)
+        page.classList.remove('active')
+       }
+    }
+    var page=document.getElementById(index)
+       page.classList.add('active')
     //creating a new span tag and passing the question number and total question
     let totalQueCounTag = '<span><p>'+ index +'</p> of <p>'+ questions.length +'</p> Questions</span>';
     bottom_ques_counter.innerHTML = totalQueCounTag;  //adding new span tag inside bottom_ques_counter
