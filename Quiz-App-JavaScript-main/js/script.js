@@ -38,11 +38,11 @@ continue_btn.onclick = ()=>{
     quiz_box.classList.add("activeQuiz"); //show quiz box
     showQuetions(0); //calling showQestions function
     queCounter(1); //passing 1 parameter to queCounter
-    startTimer(15); //calling startTimer function
+    startTimer(50); //calling startTimer function
     startTimerLine(0); //calling startTimerLine function
 }
 
-let timeValue =  15;
+let timeValue =  50;
 let que_count = 0;
 let que_numb = 1;
 let userScore = 0;
@@ -53,6 +53,13 @@ let widthValue = 0;
 
 // getting questions and options from array
 function showQuetions(index){
+    if(index==0)
+    {
+        prev_btn.classList.remove('show');
+    }
+    else{
+        prev_btn.classList.add('show');
+    }
     const que_text = document.querySelector(".que_text");
 
     //creating a new span and div tag for question and option and passing the value using array index
@@ -79,8 +86,12 @@ let crossIconTag = '<div class="icon cross"><i class="fas fa-times"></i></div>';
 
 //if user clicked on option
 function optionSelected(answer){
+    let userAns = answer.textContent; //getting user selected option
+    let correcAns = questions[que_count].answer; //getting correct answer from array
     const allOptions = option_list.children.length; //getting all option items
-        userScore += 1; //upgrading score value with 1
+    if(userAns==correcAns)
+     {   userScore += 1; //upgrading score value with 1
+}
         for(i=0; i < allOptions; i++)
   {   var item=`op-${i}`
     var ans=document.getElementById(item)
@@ -93,12 +104,6 @@ function optionSelected(answer){
     }
       answer.classList.add("correct"); //adding green color to correct selected option
         answer.insertAdjacentHTML("beforeend", tickIconTag); //adding tick icon to correct selected option
-    if(que_count>0)
-   { prev_btn.classList.add("show"); //show the prev button if user selected any option
-}
-else
-  {  prev_btn.classList.remove("show"); 
-}
 }
 
 function queCounter(index){
@@ -125,16 +130,14 @@ function startTimer(time){
             timeCount.textContent = "0" + addZero; //add a 0 before time value
         }
         if(time < 0){ //if timer is less than 0
+            alert('time')
             clearInterval(counter); //clear counter
             timeText.textContent = "Time Off"; //change the time text to time off
+            const allOptions = option_list.children.length; //getting all option items
             for(i=0; i < allOptions; i++){
                 option_list.children[i].classList.add("disabled"); //once user select an option then disabled all options
             }
-            next_btn.classList.add("show"); //show the next button if user selected any option
-          prev_btn.classList.remove("show"); 
-          prev_btn.classList.add("disabled")
-          document.getElementById('next').innerHTML='Submit'
-         //show the next button if user selected any option
+            showResult();
         }
     }
 }
@@ -183,8 +186,6 @@ prev_btn.onclick = ()=>{
         showQuetions(que_count); //calling showQestions function
         queCounter(que_numb); //passing que_numb value to queCounter
         timeText.textContent = "Time Left"; //change the timeText to Time Left
-        next_btn.classList.remove("show");
-        prev_btn.classList.remove("show"); //hide the next button
     }
     else{
         clearInterval(counter); //clear counter
@@ -226,7 +227,7 @@ restart_quiz.onclick = ()=>{
     result_box.classList.remove("activeResult"); //hide result box
     canvas.classList.remove("show-canvas");
     audio.pause();
-    timeValue = 15; 
+    timeValue = 50; 
     que_count = 0;
     que_numb = 1;
     userScore = 0;
@@ -238,8 +239,7 @@ restart_quiz.onclick = ()=>{
     startTimer(timeValue); //calling startTimer function
     startTimerLine(widthValue); //calling startTimerLine function
     timeText.textContent = "Time Left"; //change the text of timeText to Time Left
-    next_btn.classList.remove("show"); //hide the next button
-    prev_btn.classList.remove("show"); //hide the prev button
+    document.getElementById('next').innerHTML='Next Que'
 
 }
 
