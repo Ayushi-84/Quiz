@@ -12,6 +12,7 @@ const timeCount = document.querySelector(".timer .timer_sec");
 const canvas = document.querySelector("#my-canvas");
 const next_btn = document.querySelector("footer .next_btn");
 const prev_btn = document.querySelector("footer .prev_btn");
+const bottom_ques_counter = document.querySelector(".total_que");
 
 var audio = new Audio('applause.mp3');
 
@@ -132,7 +133,6 @@ function startTimer(time){
             timeCount.textContent = "0" + addZero; //add a 0 before time value
         }
         if(time < 0){ //if timer is less than 0
-            alert('time')
             clearInterval(counter); //clear counter
             timeText.textContent = "Time Off"; //change the time text to time off
             const allOptions = option_list.children.length; //getting all option items
@@ -155,8 +155,6 @@ function startTimerLine(time){
     }
 }
 
-
-const bottom_ques_counter = document.querySelector("footer .total_que");
 
 // if Next Que button clicked
 next_btn.onclick = ()=>{

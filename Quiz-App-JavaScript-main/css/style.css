@@ -274,18 +274,18 @@ footer{
     border-top: 1px solid lightgrey;
 }
 
-footer .total_que span{
+ .total_que span{
     display: flex;
     user-select: none;
     font-size: 1.4vw;
 }
 
-footer .total_que span p{
+ .total_que span p{
     font-weight: 500;
     padding: 0 5px;
 }
 
-footer .total_que span p:first-child{
+.total_que span p:first-child{
     padding-left: 0px;
 }
 
