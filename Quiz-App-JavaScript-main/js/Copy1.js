@@ -79,7 +79,11 @@ let crossIconTag = '<div class="icon cross"><i class="fas fa-times"></i></div>';
 
 //if user clicked on option
 function optionSelected(answer){
+    let userAns = answer.textContent; //getting user selected option
+    let correcAns = questions[que_count].answer; //getting correct answer from array
     const allOptions = option_list.children.length; //getting all option items
+    
+    if(userAns){ //if user selected option is equal to array's correct answer
         userScore += 1; //upgrading score value with 1
         for(i=0; i < allOptions; i++)
   {   var item=`op-${i}`
@@ -93,6 +97,24 @@ function optionSelected(answer){
     }
       answer.classList.add("correct"); //adding green color to correct selected option
         answer.insertAdjacentHTML("beforeend", tickIconTag); //adding tick icon to correct selected option
+    
+    }else{
+        // answer.classList.add("incorrect"); //adding red color to correct selected option
+        // answer.insertAdjacentHTML("beforeend", crossIconTag); //adding cross icon to correct selected option
+        
+
+        // for(i=0; i < allOptions; i++){
+        //     if(option_list.children[i].textContent == correcAns){ //if there is an option which is matched to an array answer 
+        //         option_list.children[i].setAttribute("class", "option correct"); //adding green color to matched option
+        //         option_list.children[i].insertAdjacentHTML("beforeend", tickIconTag); //adding tick icon to matched option
+        //         console.log("Auto selected correct answer.");
+        //     }
+        // }
+    }
+    // for(i=0; i < allOptions; i++){
+    //     option_list.children[i].classList.add("disabled"); //once user select an option then disabled all options
+    // }
+    next_btn.classList.add("show"); //show the next button if user selected any option
     if(que_count>0)
    { prev_btn.classList.add("show"); //show the prev button if user selected any option
 }
@@ -112,6 +134,9 @@ function queCounter(index){
     }
     var page=document.getElementById(index)
        page.classList.add('active')
+    //creating a new span tag and passing the question number and total question
+    // let totalQueCounTag = '<span><p>'+ index +'</p> of <p>'+ questions.length +'</p> Questions</span>';
+    // bottom_ques_counter.innerHTML = totalQueCounTag;  //adding new span tag inside bottom_ques_counter
 }
 
 
@@ -127,13 +152,21 @@ function startTimer(time){
         if(time < 0){ //if timer is less than 0
             clearInterval(counter); //clear counter
             timeText.textContent = "Time Off"; //change the time text to time off
+            // const allOptions = option_list.children.length; //getting all option items
+            // let correcAns = questions[que_count].answer; //getting correct answer from array
+            // for(i=0; i < allOptions; i++){
+            //     if(option_list.children[i].textContent == correcAns){ //if there is an option which is matched to an array answer
+            //         option_list.children[i].setAttribute("class", "option correct"); //adding green color to matched option
+            //         option_list.children[i].insertAdjacentHTML("beforeend", tickIconTag); //adding tick icon to matched option
+            //         console.log("Time Off: Auto selected correct answer.");
+            //     }
+            // }
             for(i=0; i < allOptions; i++){
                 option_list.children[i].classList.add("disabled"); //once user select an option then disabled all options
             }
             next_btn.classList.add("show"); //show the next button if user selected any option
           prev_btn.classList.remove("show"); 
           prev_btn.classList.add("disabled")
-          document.getElementById('next').innerHTML='Submit'
          //show the next button if user selected any option
         }
     }
@@ -161,6 +194,8 @@ next_btn.onclick = ()=>{
         showQuetions(que_count); //calling showQestions function
         queCounter(que_numb); //passing que_numb value to queCounter
         timeText.textContent = "Time Left"; //change the timeText to Time Left
+        next_btn.classList.remove("show"); //hide the next button
+        prev_btn.classList.remove("show");
     }
    else if(que_count == questions.length - 2){ //if question count is less than total question length
         que_count++; //increment the que_count value
@@ -168,6 +203,8 @@ next_btn.onclick = ()=>{
         showQuetions(que_count); //calling showQestions function
         queCounter(que_numb); //passing que_numb value to queCounter
         timeText.textContent = "Time Left"; //change the timeText to Time Left
+        next_btn.classList.remove("show"); //hide the next button
+        prev_btn.classList.remove("show");
         document.getElementById('next').innerHTML='Submit'
     }
     else{
